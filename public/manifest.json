@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "JSON Visualizer",
+  "version": "1.0",
+  "description": "Visualiza JSON directamente en el navegador.",
+  "permissions": ["tabs", "scripting", "declarativeNetRequest", "webRequest"],
+  "host_permissions": ["*://*/*.json"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
+  "action": {
+    "default_popup": "src/popup/index.html",
+    "default_icon": "vite.svg"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["src/view/index.html", "assets/*"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "declarative_net_request": {
+    "rule_resources": []
+  }
+}

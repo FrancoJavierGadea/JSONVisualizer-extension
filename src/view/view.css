@@ -1,0 +1,18 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+body, html {
+    background-color: #000;
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+    color: #fff;
+}
+
+custom-json-visualizer {
+    width: 100%;
+    min-height: 100%;
+}
