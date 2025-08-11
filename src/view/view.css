@@ -4,15 +4,109 @@
     box-sizing: border-box;
     font-family: sans-serif;
 }
+
+:root {
+    --view-bg: #222;
+    --view-color: #fff;
+
+    --toggle-mode-button-color: #fff;
+    --toggle-mode-button-bg: #444;
+    --toggle-mode-button-hover-bg: #666;
+}   
+
 body, html {
-    background-color: #000;
-    height: 100%;
-    width: 100%;
+    background-color: var(--view-bg);
+    color: var(--view-color);
     overflow-x: hidden;
-    color: #fff;
 }
 
-custom-json-visualizer {
+main {
     width: 100%;
     min-height: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+
+    & > * {
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+    }
+
+    .raw-container {
+        position: relative;
+        z-index: 10;
+    }
+    custom-json-visualizer {
+        position: relative;
+        z-index: 100;
+    }
+}
+[data-json-mode="raw"] custom-json-visualizer {
+    display: none;
+}
+
+
+/*MARK: Raw container*/
+.raw-container {
+    display: block;
+    width: 100%;
+    min-height: 100%;
+
+    .raw-iframe {
+        display: block;
+        width: 100%;
+        min-height: 100%;
+        border: none;
+    }
+}
+
+/* MARK: JSONVisualizer */
+custom-json-visualizer {
+    --copy-button-width: 50px;
+    --copy-button-height: 50px;
+}
+
+/*MARK: controls */
+.controls {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2000;
+    width: 100%;
+    height: 100dvh;
+    pointer-events: none;
+
+    .controls-content {
+        position:absolute;
+        bottom: 0;
+        right: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 5px;
+        pointer-events: initial;
+    }
+}
+
+
+/*MARK: Theme transition*/
+/* Curtain from right to left */
+::view-transition-old(theme-curtain){
+
+    animation: theme-curtain-animation var(--theme-transition-duration, 1s) linear;
+	z-index: 20000;
+}
+::view-transition-new(theme-curtain) {
+	z-index: 10000;
+    animation: none;
+}
+
+@keyframes theme-curtain-animation {
+    from {
+		clip-path: polygon(0 0, 120% 0, 100% 100%, 0 100%);
+	}
+
+	to {
+		clip-path: polygon(0 0, -20% 0, 0 100%, 0 100%);
+	}
 }

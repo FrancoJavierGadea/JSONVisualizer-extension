@@ -6,8 +6,6 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "build:content": "vite build --mode content-js",
-    "build:all": "vite build && vite build --mode content-js",
     "preview": "vite preview"
   },
   "devDependencies": {

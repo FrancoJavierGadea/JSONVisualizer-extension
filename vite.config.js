@@ -4,27 +4,6 @@ import { resolve } from "node:path";
 
 export default defineConfig(({mode}) => {
 
-	if(mode === 'content-js') return {
-		build: {
-			outDir: "dist",
-			copyPublicDir: false,
-			emptyOutDir: false,
-			rollupOptions: {
-				input: {
-					content: resolve(__dirname, "src/content.js"),
-				},
-				output: {
-					entryFileNames: (chunk) => {
-
-						if(chunk.name === "content") return "content.js";
-					},
-					inlineDynamicImports: true,
-				}
-			},
-			minify: false
-		}
-	};
-
 	return {
 		build: {
 			outDir: "dist",
@@ -34,11 +13,14 @@ export default defineConfig(({mode}) => {
 					view: resolve(__dirname, "src/view/index.html"),
 					config: resolve(__dirname, "src/config/index.html"),
 					background: resolve(__dirname, "src/background.js"),
+					content: resolve(__dirname, "src/content.js"),
 				},
 				output: {
 					entryFileNames: (chunk) => {
 
 						if(chunk.name === "background") return "background.js";
+
+						if(chunk.name === "content") return "content.js";
 
 						return "assets/[name].js";
 					}
