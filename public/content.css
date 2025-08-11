@@ -1,0 +1,88 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+  color-scheme: light dark;
+
+  --json-visualizer-toggle-buttons-color: #fff;
+  --json-visualizer-toggle-buttons-active-bg: #444;
+  --json-visualizer-toggle-buttons-hover-bg: #666;
+}
+@media (prefers-color-scheme: dark) {
+    :root {
+        --json-visualizer-toggle-buttons-color: #000;
+        --json-visualizer-toggle-buttons-active-bg: #7e7e7e;
+        --json-visualizer-toggle-buttons-hover-bg: #999;
+    }
+}
+
+
+[data-json] body {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+
+    & > * {
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+        min-width: 0;
+        min-height: 0;
+    }
+
+    background-color: brown;
+}
+
+
+[data-json] pre {
+    display: block;
+    position: relative;
+    z-index: 10;
+}
+
+[data-json] .JSONVisualizer-view {
+    display: block;
+    width: 100%;
+    min-height: 100%;
+    position: relative;
+    z-index: 100;
+    border: none;
+}
+[data-json="raw"] .JSONVisualizer-view {
+    display: none;
+}
+
+
+[data-json] .JSONVisualizer-toggle-buttons {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 1000;
+    width: 300px;
+    height: 80px;
+
+    display: flex;
+
+    button {
+        display: block;
+        flex-grow: 1;
+        background-color: transparent;
+        border: none;
+        font-size: 1.8em;
+        letter-spacing: 1px;
+
+        color: var(--json-visualizer-toggle-buttons-color);
+    }
+    button:hover {
+
+        background-color: var(--json-visualizer-toggle-buttons-hover-bg);
+    }
+}
+[data-json="json"] .JSONVisualizer-toggle-buttons .JSONVisualizer-json-button {
+    background-color: var(--json-visualizer-toggle-buttons-active-bg);
+}
+[data-json="raw"] .JSONVisualizer-toggle-buttons .JSONVisualizer-raw-button {
+    background-color: var(--json-visualizer-toggle-buttons-active-bg);
+}
