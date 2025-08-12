@@ -1,5 +1,6 @@
 import './view.css';
 import './css/view-transitions.css';
+import './css/themes.css';
 
 //Components
 import '@components-1812/json-visualizer';
