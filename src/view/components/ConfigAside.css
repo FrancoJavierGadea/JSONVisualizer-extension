@@ -1,13 +1,32 @@
+
+:host {
+    --config-aside-bg: #333;
+    --config-aside-color: #fff;
+    --config-aside-icons-color: #fff;
+    --config-aside-icons-hover-color: #999;
+    
+    --config-aside-header-height: 50px;
+    --config-aside-padding: 10px;
+    --config-aside-width: 400px;
+    --config-aside-content-gap: 30px;
+}
 :host .config-aside {
-	padding: 5px;
+    width: var(--config-aside-width);
 	height: 100%;
-	width: 300px;
+	padding: var(--config-aside-padding);
+
+    display: flex;
+    flex-direction: column;
+
 	position: fixed;
 	bottom: 0;
 	right: 0;
 	z-index: 2000;
-	background-color: var(--config-aside-bg, #333);
-	color: var(--config-aside-color, #fff);
+
+	background-color: var(--config-aside-bg);
+	color: var(--config-aside-color);
+    border-left: var(--config-aside-border);
+    box-shadow: var(--config-aside-shadow);
 
 	translate: 100% 0;
 	transition: translate 0.2s ease-in-out;
@@ -18,6 +37,24 @@
 		align-items: center;
 		font-size: 1em;
 	}
+    .config-aside-body {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+
+        .config-aside-content {
+            flex-grow: 1;
+            overflow-y: auto;
+
+            display: flex;
+            flex-direction: column;
+            gap: var(--config-aside-content-gap);
+        }
+        .config-aside-footer {
+
+        }
+    }
 }
 :host([open]) .config-aside {
 	translate: 0 0;

@@ -14,7 +14,7 @@
 
         <div class="controls-content">
 
-            <custom-config-aside>
+            <custom-config-aside open>
         
                 <svg slot="open-icon" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                     <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492M5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0"/>
@@ -24,13 +24,17 @@
                 <svg slot="close-icon" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                     <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
                 </svg>
-    
+
+                <!-- MARK: Controls -->
                 <custom-theme-control view-transition-name="theme-curtain"></custom-theme-control>
         
+                <custom-colors-control></custom-colors-control>
+
+                <custom-urls-control></custom-urls-control>
+
             </custom-config-aside>
     
             <custom-toggle-mode-button disabled></custom-toggle-mode-button>
-
         </div>
     </div>
 

@@ -1,10 +1,41 @@
 
 
 html[theme="tokio-night"] {
+    /* Aside de configuración */
 
+    custom-config-aside {
+        --config-aside-color: #c0caf5; /* texto principal */
+        --config-aside-icons-color: #565f89; /* gris suave */
+        --config-aside-icons-hover-color: #7aa2f7; /* azul claro al pasar el mouse */
+
+        --config-aside-bg: #1f2335; /* un poco más claro que el fondo principal */
+
+        --config-aside-border: 1px solid #2f3549; /* borde sutil */
+        --config-aside-shadow: 4px 0 8px rgba(0, 0, 0, 0.4); /* sombra lateral */
+    }
+
+    custom-json-loader {
+
+        /* Loader del JSON */
+        --json-loader-bg: #1a1b26;
+        --json-loader-color: #c0caf5;
+        --json-loader-border: 1px solid #2f3549;
+    
+        /* Botón de enviar */
+        --json-loader-submit-bg: #7aa2f7; /* azul del key */
+        --json-loader-submit-color: #1a1b26; /* contraste oscuro */
+        --json-loader-submit-border: 1px solid #565f89;
+    
+        --json-loader-submit-hover-bg: #9ece6a; /* verde del string */
+        --json-loader-submit-hover-color: #1a1b26;
+    
+        /* Zona de arrastrar archivos */
+        --json-loader-drag-zone-border: 2px dashed #565f89;
+        --json-loader-drag-zone-hover-border: 2px dashed #7aa2f7;
+    }
 }
 html[theme="wizard"]{
-    
+
 }
 html[theme="monokai"] {
 

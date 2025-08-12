@@ -10,7 +10,7 @@ import "@components-1812/json-visualizer/assets/themes/dark-default.css";
 import "@components-1812/json-visualizer/assets/themes/light-default.css";
 import rawCss from "./ThemeControl.css?raw";
 
-import CONFIG from "../utils/ConfigStorage.js";
+import CONFIG from "../../utils/ConfigStorage.js";
 
 const THEMES = [
     'default', 

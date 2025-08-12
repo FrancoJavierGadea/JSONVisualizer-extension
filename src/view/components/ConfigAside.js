@@ -28,7 +28,12 @@ export class ConfigAside extends HTMLElement {
                     </button>
                 </div>
                 <div class="config-aside-body">
-                    <slot>Config body</slot>
+                    <div class="config-aside-content">
+                        <slot>Config body</slot>
+                    </div>
+                    <div class="config-aside-footer">
+                        <slot name="config-footer">Config footer</slot>
+                    </div>
                 </div>
             </aside>
         `;
