@@ -1,25 +1,21 @@
 import './view.css';
+import './css/view-transitions.css';
+
+//Components
 import '@components-1812/json-visualizer';
-import { ToggleModeButton } from './components/ToggleModeButton.js';
-import { ConfigAside } from './components/ConfigAside.js';
-import { ThemeControl } from "./components/ThemeControl.js";
-import CONFIG from "./utils/ConfigStorage.js";
-import { queryParams } from "./utils/queryParams.js";
+import './components/JsonLoader.js';
+import './components/ToggleModeButton.js';
+import './components/ConfigAside.js';
+import './components/ThemeControl.js';
 
+import CONFIG from './utils/ConfigStorage.js';
+import QUERY_PARAMS from './utils/queryParams.js';
 
+//MARK: initJSONVisualizer
+async function initJSONVisualizer({json, src} = {}){
 
-async function initComponents() {
-    
-    customElements.define('custom-toggle-mode-button', ToggleModeButton);
-    customElements.define('custom-config-aside', ConfigAside);
-    customElements.define('custom-theme-control', ThemeControl);
-}
-
-
-async function initJSONVisualizer(){
-
-    const json = queryParams('json');
-    const src = queryParams('src');
+    json ??= QUERY_PARAMS.get('json');
+    src ??= QUERY_PARAMS.get('src');
     
     if(json || src){
         
@@ -54,11 +50,17 @@ async function initJSONVisualizer(){
             jsonVisualizer.json = json;
         }
         
-        
         document.querySelector('main').replaceChildren(rawContainer, jsonVisualizer);
+
+        if(document.querySelector('custom-toggle-mode-button')){
+
+            document.querySelector('custom-toggle-mode-button').disabled = false
+        }
+
+        document.documentElement.setAttribute('data-json-loaded', '');
     }
 }
 
+window.initJSONVisualizer = initJSONVisualizer;
 
 initJSONVisualizer();
-initComponents();

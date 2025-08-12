@@ -1,0 +1,21 @@
+
+/*MARK: Theme transition: Curtain from right to left */
+::view-transition-old(theme-curtain){
+
+    animation: theme-curtain-animation var(--theme-transition-duration, 1s) linear;
+	z-index: 20000;
+}
+::view-transition-new(theme-curtain){
+	z-index: 10000;
+    animation: none;
+}
+
+@keyframes theme-curtain-animation {
+    from {
+		clip-path: polygon(0 0, 120% 0, 100% 100%, 0 100%);
+	}
+
+	to {
+		clip-path: polygon(0 0, -20% 0, 0 100%, 0 100%);
+	}
+}

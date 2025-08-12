@@ -1,70 +1,7 @@
-
+import rawCss from "./ConfigAside.css?raw";
 
 const css = new CSSStyleSheet();
-css.replaceSync(`
-    :host .config-aside {
-        padding: 5px;
-        height: 100%;
-        width: 300px;
-        position: fixed;
-        bottom: 0;
-        right: 0;
-        z-index: 2000;
-        background-color: var(--config-aside-bg, #333);
-        color: var(--config-aside-color, #fff);
-
-        translate: 100% 0;
-        transition: translate 0.2s ease-in-out;
-
-        .config-aside-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 1em;
-        }
-    }
-    :host([open]) .config-aside {
-        translate: 0 0;
-    }
-    :host button {
-        background: transparent;
-        border: none;
-        cursor: pointer;
-        padding: 10px;
-        color: var(--config-aside-icons-color, #fff);
-        transition: color 0.2s ease-in-out;
-
-        width: var(--config-aside-icons-size, 40px);
-        height: var(--config-aside-icons-size, 40px);
-
-        &:hover {
-            color: var(--config-aside-icons-hover-color, #999);
-        }
-        .icon {
-            width: 100%;
-            height: 100%;
-        }
-        .icon ::slotted(svg) {
-            display: block;
-            width: 100%;
-            height: 100%;
-        }
-    }
-    :host .close-aside-button {
-        
-    }
-    :host .open-aside-button {
-        --config-aside-icons-size: 50px;
-        
-        & .icon {
-            transition: rotate 0.2s ease-in-out;
-        }
-        &:hover .icon {
-            rotate: 45deg;
-        }
-    }
-           
-`);
+css.replaceSync(rawCss);
 
 export class ConfigAside extends HTMLElement {
 
@@ -121,3 +58,5 @@ export class ConfigAside extends HTMLElement {
         return this.hasAttribute('open');
     }
 }
+
+customElements.define('custom-config-aside', ConfigAside);

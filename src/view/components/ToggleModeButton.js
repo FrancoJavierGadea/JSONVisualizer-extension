@@ -1,39 +1,7 @@
-
+import rawCss from "./ToggleModeButton.css?raw";
 
 const css = new CSSStyleSheet();
-css.replaceSync(`
-    :host {
-        button {
-
-            min-width: 150px;
-            min-height: 70px;
-            background-color: var(--toggle-mode-button-bg);
-            color: var(--toggle-mode-button-color);
-
-            border: none;
-            cursor: pointer;
-            font-size: 2.3em;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 5px; 
-            transition: background-color 0.2s ease-in-out;
-
-            border-top-left-radius: 10px;
-        
-            &:hover {
-                background-color: var(--toggle-mode-button-hover-bg);
-            }
-        }
-    }
-    :host([data-json-mode="raw"]) span[json] {
-
-        display: none;
-    }
-    :host([data-json-mode="json"]) span[raw] {
-
-        display: none;
-    }
-`);
+css.replaceSync(rawCss);
 
 export class ToggleModeButton extends HTMLElement {
 
@@ -42,9 +10,6 @@ export class ToggleModeButton extends HTMLElement {
         JSON: 'json'
     }
 
-    /**@type {HTMLElement|null} */
-    #node = null;
-
     constructor(){
         super();
 
@@ -52,10 +17,10 @@ export class ToggleModeButton extends HTMLElement {
 
         this.shadowRoot.innerHTML = `
             <button>
-                <span json>
+                <span class="mode mode-json">
                     <slot name="mode-json">JSON</slot>
                 </span>
-                <span raw>
+                <span class="mode mode-raw">
                     <slot name="mode-raw">RAW</slot>
                 </span>
             </button>
@@ -106,7 +71,16 @@ export class ToggleModeButton extends HTMLElement {
         return this.getAttribute('data-json-mode');
     }
 
+    set disabled(value){
+        value ? this.setAttribute('disabled', '') : this.removeAttribute('disabled');
+    }
+    get disabled(){
+        return this.hasAttribute('disabled');
+    }
+
     get target(){
         return this.getAttribute('target') ?? 'html';
     }
 }
+
+customElements.define('custom-toggle-mode-button', ToggleModeButton);

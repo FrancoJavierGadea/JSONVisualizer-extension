@@ -8,6 +8,7 @@ import "@components-1812/json-visualizer/assets/themes/tokio-night.css";
 import "@components-1812/json-visualizer/assets/themes/iceberg.css";
 import "@components-1812/json-visualizer/assets/themes/dark-default.css";
 import "@components-1812/json-visualizer/assets/themes/light-default.css";
+import rawCss from "./ThemeControl.css?raw";
 
 import CONFIG from "../utils/ConfigStorage.js";
 
@@ -25,17 +26,7 @@ const THEMES = [
 ];
 
 const css = new CSSStyleSheet();
-css.replaceSync(`
-    :host {
-        width: 100%;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        select {
-            flex: 1;
-        }
-    }
-`);
+css.replaceSync(rawCss);
 
 
 export class ThemeControl extends HTMLElement {
@@ -119,3 +110,5 @@ export class ThemeControl extends HTMLElement {
     }
 
 }
+
+customElements.define('custom-theme-control', ThemeControl);
