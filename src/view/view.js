@@ -8,8 +8,7 @@ import './components/JsonLoader.js';
 import './components/ToggleModeButton.js';
 import './components/ConfigAside.js';
 import './components/controls/ThemeControl.js';
-import './components/controls/ColorsControl.js';
-import './components/controls/UrlsControl.js';
+import './components/controls/ConfigControls.js';
 
 import CONFIG from './utils/ConfigStorage.js';
 import QUERY_PARAMS from './utils/queryParams.js';
